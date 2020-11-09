@@ -13,15 +13,16 @@ mongoose.connect(
 );
 
 const app = express();
+app.use(express.json());
 
-app.post("/create_comments", (req, res) => {
+app.post("/create_comments", async (req, res) => {
   try {
     const newComment = new Comment(req.body);
-    newComment.save();
+    await newComment.save();
 
     res.send(newComment);
   } catch (error) {
-    res.send({ message: error });
+    res.status(400).send({ message: error });
   }
 });
 
