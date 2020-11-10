@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 require("dotenv/config");
 
 const commentsRoute = require("./routes/comments");
@@ -14,6 +15,7 @@ mongoose.connect(
 );
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 app.use("/comments", commentsRoute);
 
