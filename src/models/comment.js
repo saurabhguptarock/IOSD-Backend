@@ -5,6 +5,10 @@ const Comment = new mongoose.Schema({
     type: String,
     required: true,
   },
+  date: {
+    type: Date,
+    required: true,
+  },
 });
 
-module.exports = mongoose.model("comment", Comment);
+module.exports = mongoose.model("comments", Comment);
