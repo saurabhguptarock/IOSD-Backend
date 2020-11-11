@@ -59,7 +59,6 @@ router.get("/threads/:id/:page_number", async (req, res) => {
 });
 
 router.post("/threads", async (req, res) => {
-  console.log(req.body);
   try {
     const comment = await Comment(req.body);
     await comment.save();
