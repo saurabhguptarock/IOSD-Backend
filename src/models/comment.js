@@ -14,6 +14,7 @@ const Comment = new mongoose.Schema({
     required: true,
   },
   likes: { type: Number, default: 0 },
+
   replies: { type: Number, default: 0 },
   thread: { type: String, default: "" },
 });
