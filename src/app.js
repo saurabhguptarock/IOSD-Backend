@@ -19,4 +19,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use("/comments", commentsRoute);
 
-app.listen(5000, () => console.log("Listening on Port 5000"));
+app.listen(process.env.PORT | 5000, () =>
+  console.log("Listening on Port 5000")
+);
