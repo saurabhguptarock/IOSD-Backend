@@ -15,6 +15,7 @@ const Comment = new mongoose.Schema({
   },
   likes: { type: Number, default: 0 },
   replies: { type: Number, default: 0 },
+  thread: { type: String, default: "" },
 });
 
 module.exports = mongoose.model("comments", Comment);
