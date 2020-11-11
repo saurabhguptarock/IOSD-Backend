@@ -20,5 +20,5 @@ app.use(bodyParser.json());
 app.use("/comments", commentsRoute);
 
 app.listen(process.env.PORT | 5000, () =>
-  console.log("Listening on Port 5000")
+  console.log(`Listening on Port ${process.env.PORT | 5000}`)
 );
