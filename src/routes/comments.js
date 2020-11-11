@@ -3,7 +3,7 @@ const Comment = require("../models/comment");
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/add_comment/:id", async (req, res) => {
   try {
     const newComment = new Comment(req.body);
     await newComment.save();
@@ -14,16 +14,28 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.post("/add_comment_thread/:id", async (req, res) => {
   try {
-    const comments = await Comment.find().limit(10);
+    const newComment = new Comment(req.body);
+    await newComment.save();
+
+    res.json(newComment);
+  } catch (error) {
+    res.status(200).json({ message: error });
+  }
+});
+
+router.get("/:page_number", async (req, res) => {
+  skips = 10 * (req.params.page_number - 1);
+  try {
+    const comments = await Comment.find().skip(skips).limit(10);
     res.json(comments);
   } catch (error) {
     res.status(200).json({ message: error });
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/get_single/:id", async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.id);
     res.json(comment);
