@@ -6,6 +6,9 @@
     "start": "node src/app.js",
     "dev": "nodemon src/app.js"
   },
+  "engines": {
+    "node": "12.14.1"
+  },
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
